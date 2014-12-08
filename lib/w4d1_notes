@@ -1,0 +1,60 @@
+What is an API?
+
+What are places we can send information to?
+What is restful architechture?
+
+rails fighters/hobbies
+--database = postgresql
+
+rails g model fighter
+rake routes
+
+routes.rb
+
+resources :fighters
+ resources :hobbies :only index
+
+make a fighters controller
+
+
+
+fighters_controller
+
+class FightersController < ApplicationController
+  def index
+    render test: "hello!"
+    render json: (important_message: Hello!)
+    render json: fighter.all
+
+  end
+
+  def create
+    #get the name from the request body
+    #create a new instance
+    #save the new instance
+
+    fighter = Fighter.new
+    fighter.create!(name: params[:name])
+    if fighter.save
+    render json: fighter
+    else
+    render json: fighter.errors.full_
+    render json: Fighter.last
+
+  end
+
+  def show
+    render json: fighter.find(self.params[:id])
+  end
+
+  def destroy
+
+  end
+
+ end
+
+
+params =
+1. body
+2. url
+3. query string
